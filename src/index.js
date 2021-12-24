@@ -19,27 +19,31 @@ refs.searchBox.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
    e.preventDefault();
-   let namberInput = refs.searchBox.value.length;
+   // let namberInput = refs.searchBox.value.length;
    let wordInput = refs.searchBox.value;
    // ==свойство=trim()================== 
    let searchQuery = wordInput.trim()
    // console.log('namberInput-', namberInput)
    // console.log('wordInput.trim-', wordInput.trim())
    // console.log('searchQuery-', searchQuery)
-   if (namberInput < 2) {
-      Notify.info('Too many matches found. Please enter a more specific name.');
+   if (searchQuery.length >= 1) {
+      // Notify.info('Too many matches found. Please enter a more specific name.');
       API.fetchCountries(searchQuery)
          .then(rendercardContainer)
          .catch(error => {
             console.log(error)
          });
-   } else {
-      API.fetchCountries(searchQuery)
-         .then(rendercardContainer)
-         .catch(error => {
-            console.log(error)
-         });
-   };
+   } else (
+      rendercardContainer([])
+   )
+
+   //  else {
+   //    API.fetchCountries(searchQuery)
+   //       .then(rendercardContainer)
+   //       .catch(error => {
+   //          console.log(error)
+   //       });
+   // };
 };
 
 // =====render============
@@ -54,8 +58,10 @@ function rendercardContainer(country) {
       let markup2 = countryCardTp2(country);
       refs.cardContainer.innerHTML = markup2;
       // console.log(markup2)
-   } else if (resp.length === undefined) {
+   } else if (resp.length === undefined || resp.length === 0) {
       let markup2 = countryCardTp2(country);
       refs.cardContainer.innerHTML = markup2;
+   } else if (resp.length > 10) {
+      Notify.info('Too many matches found. Please enter a more specific name.');
    }
 };
