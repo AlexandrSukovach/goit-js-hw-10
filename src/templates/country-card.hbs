@@ -1,0 +1,21 @@
+<div style="padding-left: 10px;">
+   <div style="display: flex; align-items: center;">
+      <img style="display: block; max-width: 50px; max-height: 50px; height: auto; margin-right: 20px;" src="{{0.flags.svg}}" alt="{{0.name.official}}">
+      <h2 style="font-size: 35px;">{{0.name.official}}</h2>
+   </div>
+   
+   <div>
+      <p style="font-size: 20px; margin-right: 10px; margin-top: 35px;"><b style="font-size: 25px;">Name:</b> {{0.name.common}}</p>
+      <p style="font-size: 20px; margin-right: 10px; margin-top: 35px;"><b style="font-size: 25px;">Capital:</b> {{0.capital}}</p>
+      <p style="font-size: 20px; margin-right: 10px; margin-top: 35px;"><b style="font-size: 25px;">Population:</b> {{0.population}}</p>
+   </div>
+
+   <div  style="display: flex; align-items: baseline;">
+      <p style="font-size: 20px; margin-right: 10px;"><b style="font-size: 25px;">Languages:</b></p>
+      <div style="display: flex;">
+         {{#each  0.languages}}
+      <p  style="margin-right: 10px; font-size: 20px; max-height: 20px;">{{0.languages}}{{this}}</p>
+      {{/each}} 
+      </div>
+   </div>
+</div>
