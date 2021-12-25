@@ -13,7 +13,6 @@ const refs = {
    searchBox: document.querySelector('#search-box'),
    listCountry: document.querySelector(".country-list"),
 };
-
 // ==свойство=debounce================== 
 refs.searchBox.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
@@ -35,15 +34,7 @@ function onSearch(e) {
          });
    } else (
       rendercardContainer([])
-   )
-
-   //  else {
-   //    API.fetchCountries(searchQuery)
-   //       .then(rendercardContainer)
-   //       .catch(error => {
-   //          console.log(error)
-   //       });
-   // };
+   );
 };
 
 // =====render============
